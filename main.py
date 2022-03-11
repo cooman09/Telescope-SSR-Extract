@@ -2,12 +2,16 @@ import json
 import base64
 import requests
 token = 'Token ' + input('请输入token：') #请看抓包教程
-endpoint = 'https://alihk.quickg.cc/api/v5/nodes/'
-he = {'Host': 'alihk.quickg.cc','Authorization': token, 'channel': 'GW', 'appVersion': '1.0.0', 'Accept-Language': 'en-US,en;q=0.9', 'Accept-Encoding': 'gzip, deflate, br', 'platform': 'ios', 'imei': '30750a377dab46109a2b27c425ed566f', 'Content-Length': '0', 'User-Agent': 'Telescope/129 CFNetwork/1329 Darwin/21.3.0', 'Connection': 'keep-alive', 'appBuild': '129', 'systemVersion': '15.3.1', 'Accept': 'application/json'}
+#endpoint = 'https://alihk.quickg.cc/api/v5/nodes/'
+endpoint = 'https://jxapi.qqgg.work:65080/api/v4/nodes/'
+#he = {'Host': 'jxapi.qqgg.work','Authorization': token, 'channel': 'GW', 'appVersion': '2.0.0', 'Accept-Language': 'en-US,en;q=0.9', 'Accept-Encoding': 'gzip, deflate, br', 'platform': 'windows', 'imei': '30750a377dab46109a2b27c425ed566f', 'Content-Length': '0', 'User-Agent': 'Telescope/129 CFNetwork/1329 Darwin/21.3.0', 'Connection': 'keep-alive', 'appBuild': '129', 'systemVersion': '15.3.1', 'Accept': 'application/json'}
+he = {'Authorization': token, 'appVersion': '2.0.0', 'versionCode': '11', 'channel': 'GW', 'imei': '83cc2884f519bbbd61f2ccbdaf7bd25d', 'platform':'windows', 'systemVersion':'Microsoft Windows NT 10.0.19043.0', 'Host': 'jxapi.qqgg.work:65080'}
 try:
     r=requests.post(endpoint, headers=he)
 except requests.exceptions.ConnectionError:
     print("Cannot connect to API. Please check your internet connection")
+    exit(0)
+#print(r.text)
 apidata = r.text
 data = json.loads(apidata)
 apinodes = data['data']
